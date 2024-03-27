@@ -1,0 +1,42 @@
+#back {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  position: relative;
+}
+.blurr {
+  background-image: url("/public/pexels-francesco-ungaro-2835436.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(5px);
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
+}
+.weather-image-container {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  min-height: 600px;
+  background-color: aqua;
+}
+.back-weather-img {
+  height: 400px;
+  background-image: url("/public/pexels-fabian-reitmeier-707915.jpg");
+  background-size: "cover";
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.content-weather-img {
+  width: 100%;
+}
+.content-desc {
+  width: 100%;
+  display: flex;
+}
