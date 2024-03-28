@@ -1,5 +1,5 @@
 .background {
-  background-image: url("https://letdream.ap-south-1.linodeobjects.com/opendream.ori/4944764cfbe909488b_0.jpg"); /* Adjust the path to your image */
+  background-image: url("/public/pexels-photo-1121595.webp"); /* Adjust the path to your image */
   background-size: cover;
   background-position: center;
   height: 100vh; /* Set height to cover the entire viewport */

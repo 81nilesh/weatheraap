@@ -3,8 +3,6 @@ import { useLocation } from 'react-router-dom';
 import { Typography, Box, CircularProgress } from '@mui/material';
 import { getWeatherDetails } from '../Services/WeatherService';
 import './css/weather.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCloud, faSnowflake } from '@fortawesome/free-solid-svg-icons';
 import CloudQueueIcon from '@mui/icons-material/CloudQueue';
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
 import ThunderstormOutlinedIcon from '@mui/icons-material/ThunderstormOutlined';
@@ -12,6 +10,8 @@ import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import CelebrationOutlinedIcon from '@mui/icons-material/CelebrationOutlined';
 import PermMediaOutlinedIcon from '@mui/icons-material/PermMediaOutlined';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
+
+// Function to get current time in 12-hour format
 function getCurrentTime() {
     const currentDate = new Date();
     let hours = currentDate.getHours();
@@ -27,12 +27,14 @@ function getCurrentTime() {
     return `${hours}:${minutes} ${period}`;
 }
 
+// WeatherDetails component
 function WeatherDetails() {
     const location = useLocation();
     const [weather, setWeather] = useState(null);
     const [loading, setLoading] = useState(true);
     const [currentTime, setCurrentTime] = useState(getCurrentTime()); // Initialize with current time
 
+    // Fetch weather data based on location
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -49,8 +51,8 @@ function WeatherDetails() {
         fetchData();
     }, [location.search]);
 
+    // Update current time every minute
     useEffect(() => {
-        // Update current time every minute
         const interval = setInterval(() => {
             setCurrentTime(getCurrentTime());
         }, 60000); // 60000 milliseconds = 1 minute
@@ -80,21 +82,14 @@ function WeatherDetails() {
                             </div>
                             <div className='bottom-div'>
                                 <div className='text'>
-                                    {/* <img src="" alt="" /> */}
-
                                     <p>  <WbSunnyOutlinedIcon /> WEATHER</p>
                                 </div>
                                 <div className='text1'>
-                                    {/* <img src="" alt="" /> */}
                                     <p> <CelebrationOutlinedIcon />NEWS & EVENTS</p>
-
                                 </div>
                                 <div className='text2'>
-                                    {/* <img src="" alt="" /> */}
                                     <p> <PermMediaOutlinedIcon />GALARY(30)</p>
-
                                 </div>
-
                             </div>
                         </div>
                         <div className='content-weather-img'>
@@ -109,10 +104,10 @@ function WeatherDetails() {
                                         <div className='img-container'>
                                             <ThunderstormOutlinedIcon />
                                             <p>4 kmph /{weather.data[0].dewpt} <sup>o</sup></p>
-
                                         </div>
                                     </div>
                                 </div>
+                                {/* Display weather forecast for the upcoming days */}
                                 <div className='day1'>
                                     <div className='day2'>TUE</div>
                                     <CloudQueueIcon />
@@ -127,7 +122,7 @@ function WeatherDetails() {
 
                                 <div className='day1'>
                                     <div className='day2'>THU</div>
-                                    <FontAwesomeIcon icon={faCloud} />
+                                    <CloudQueueIcon />
                                     <div>{weather.data[3].dewpt}<sup>o</sup></div>
                                 </div>
 
@@ -139,7 +134,7 @@ function WeatherDetails() {
 
                                 <div className='day1'>
                                     <div className='day2'>SAT</div>
-                                    <FontAwesomeIcon icon={faSnowflake} />
+                                    <CloudQueueIcon />
                                     <div>{weather.data[5].dewpt}<sup>o</sup></div>
                                 </div>
 
@@ -148,7 +143,6 @@ function WeatherDetails() {
                                     <CloudQueueIcon style={{ color: "#fff" }} />
                                     <div>{weather.data[6].dewpt}<sup>o</sup></div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
