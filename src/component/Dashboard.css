@@ -23,6 +23,8 @@
 /* TextField */
 .weather-input {
   width: 100%;
+  background: #fff;
+  border: 2px solid black;
 }
 
 /* Button */
@@ -30,6 +32,7 @@
   width: 10%;
   border: 1px solid black;
   border-radius: 5px;
+  background: none;
 }
 
 /* Media Queries for responsiveness */
@@ -39,4 +42,20 @@
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 20px;
   }
+}
+@media screen and (max-width: 600px) {
+  .weather-heading {
+    font-size: 2.5rem; /* Adjust font size for smaller screens */
+  }
+}
+
+.css-1bn4tuo-MuiTypography-root {
+  margin: 0;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.167;
+  letter-spacing: -0.01562em;
+  text-align: center;
+  margin-bottom: 0.35em;
 }

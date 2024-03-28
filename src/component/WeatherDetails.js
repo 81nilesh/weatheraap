@@ -1,23 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Typography, Box, CircularProgress } from '@mui/material';
-// import { getWeatherDetails } from '../services/weatherService';
 import { getWeatherDetails } from '../Services/WeatherService';
 import './css/weather.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCloud, faSnowflake } from '@fortawesome/free-solid-svg-icons';
+import CloudQueueIcon from '@mui/icons-material/CloudQueue';
+import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
+import ThunderstormOutlinedIcon from '@mui/icons-material/ThunderstormOutlined';
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import CelebrationOutlinedIcon from '@mui/icons-material/CelebrationOutlined';
+import PermMediaOutlinedIcon from '@mui/icons-material/PermMediaOutlined';
+import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
+function getCurrentTime() {
+    const currentDate = new Date();
+    let hours = currentDate.getHours();
+    let minutes = currentDate.getMinutes();
+    const period = hours >= 12 ? 'PM' : 'AM';
 
+    // Convert hours to 12-hour format
+    hours = hours % 12;
+    hours = hours ? hours : 12; // Handle midnight (0 hours) as 12 AM
+    // Add leading zero to minutes if necessary
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+
+    return `${hours}:${minutes} ${period}`;
+}
 
 function WeatherDetails() {
     const location = useLocation();
     const [weather, setWeather] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [currentTime, setCurrentTime] = useState(getCurrentTime()); // Initialize with current time
 
     useEffect(() => {
         const fetchData = async () => {
-            console.log('====================================');
-            console.log('====================================');
             try {
                 const city = new URLSearchParams(location.search);
-                console.log(`city : ${city}`);
 
                 const response = await getWeatherDetails(city);
                 setWeather(response);
@@ -30,6 +49,15 @@ function WeatherDetails() {
         fetchData();
     }, [location.search]);
 
+    useEffect(() => {
+        // Update current time every minute
+        const interval = setInterval(() => {
+            setCurrentTime(getCurrentTime());
+        }, 60000); // 60000 milliseconds = 1 minute
+
+        return () => clearInterval(interval); // Cleanup interval on component unmount
+    }, []);
+
     return (
         <>
             <div id="back">
@@ -40,14 +68,89 @@ function WeatherDetails() {
                 ) : (
                     <div className='weather-image-container'>
                         <div className='back-weather-img'>
+                            <div className='top-left'>
+                                <p>Buch<span>arest, RO</span></p>
+                            </div>
+                            <div className='top-right'>
+                                <LocationOnOutlinedIcon />
+                                <p>{weather.city_name} {weather.country_code} <br /> {currentTime}</p>
+                            </div>
+                            <div className='right-bottom'>
+                                <p>LATEST LOCATION    <MapOutlinedIcon /></p>
+                            </div>
+                            <div className='bottom-div'>
+                                <div className='text'>
+                                    {/* <img src="" alt="" /> */}
 
-                        </div>
-                        <div className='content-weather-img'>
-                            <div className='content-desc'>
-                                
+                                    <p>  <WbSunnyOutlinedIcon /> WEATHER</p>
+                                </div>
+                                <div className='text1'>
+                                    {/* <img src="" alt="" /> */}
+                                    <p> <CelebrationOutlinedIcon />NEWS & EVENTS</p>
+
+                                </div>
+                                <div className='text2'>
+                                    {/* <img src="" alt="" /> */}
+                                    <p> <PermMediaOutlinedIcon />GALARY(30)</p>
+
+                                </div>
+
                             </div>
                         </div>
+                        <div className='content-weather-img'>
+                            <div className='blurr2'></div>
+                            <div className='content-desc'>
+                                <div className='center'>
+                                    <div className='cen'>
+                                        <span>{weather.data[0].dewpt} <sup>o</sup></span>
+                                        <div className='day'>MONDAY 27th</div>
+                                    </div>
+                                    <div className='img-cen'>
+                                        <div className='img-container'>
+                                            <ThunderstormOutlinedIcon />
+                                            <p>4 kmph /{weather.data[0].dewpt} <sup>o</sup></p>
 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='day1'>
+                                    <div className='day2'>TUE</div>
+                                    <CloudQueueIcon />
+                                    <div>{weather.data[1].dewpt}<sup>o</sup></div>
+                                </div>
+
+                                <div className='day1'>
+                                    <div className='day2'>WED</div>
+                                    <WbSunnyOutlinedIcon style={{ color: "yellow" }} />
+                                    <div>{weather.data[2].dewpt}<sup>o</sup></div>
+                                </div>
+
+                                <div className='day1'>
+                                    <div className='day2'>THU</div>
+                                    <FontAwesomeIcon icon={faCloud} />
+                                    <div>{weather.data[3].dewpt}<sup>o</sup></div>
+                                </div>
+
+                                <div className='day1'>
+                                    <div className='day2'>FRI</div>
+                                    <ThunderstormOutlinedIcon />
+                                    <div>{weather.data[4].dewpt}<sup>o</sup></div>
+                                </div>
+
+                                <div className='day1'>
+                                    <div className='day2'>SAT</div>
+                                    <FontAwesomeIcon icon={faSnowflake} />
+                                    <div>{weather.data[5].dewpt}<sup>o</sup></div>
+                                </div>
+
+                                <div className='day1'>
+                                    <div className='day2'>SUN</div>
+                                    <CloudQueueIcon style={{ color: "#fff" }} />
+                                    <div>{weather.data[6].dewpt}<sup>o</sup></div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 )}
             </div>

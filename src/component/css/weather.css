@@ -24,7 +24,8 @@
   flex-direction: column;
   width: 80vw;
   min-height: 600px;
-  background-color: aqua;
+  border-radius: 5px;
+  /* background-color: aqua; */
 }
 .back-weather-img {
   height: 400px;
@@ -32,11 +33,273 @@
   background-size: "cover";
   background-position: center;
   background-repeat: no-repeat;
+  position: relative;
 }
+.top-left {
+  position: absolute;
+  left: 35px; /* End at bottom */
+  color: #fff;
+  top: 2px;
+  font-size: 34px;
+}
+.top-left > p > span {
+  border-left: 3px solid gray;
+  opacity: 0.5;
+}
+.top-right {
+  position: absolute;
+  right: 30px; /* End at bottom */
+  color: #fff;
+  top: 25px;
+  text-align: center;
+}
+
+.right-bottom {
+  position: absolute;
+  width: 210px;
+  right: 0px; /* End at bottom */
+  color: #fff;
+  bottom: 20%;
+  text-align: center;
+  background-color: rgb(120, 194, 9);
+  border-radius: 20px 0px 0px 20px;
+  color: #fff;
+}
+.right-bottom > p {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.right-bottom > p > svg {
+  margin-left: 9px;
+}
+
+.bottom-div {
+  position: absolute;
+  bottom: 0; /* End at bottom */
+  display: flex;
+}
+
+.bottom-div > div > p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 10px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+.bottom-div > div > p > svg {
+  margin-right: 12px;
+}
+.text {
+  border-bottom: 3px solid rgba(196, 196, 8, 0.742);
+}
+.text1 {
+  border-bottom: 3px solid rgb(150, 150, 244);
+  opacity: 0.7;
+}
+.text2 {
+  border-bottom: 3px solid rgb(59, 164, 196);
+}
+.progress {
+  position: absolute;
+  bottom: 30%;
+  color: white;
+}
+
 .content-weather-img {
   width: 100%;
+  position: relative;
+}
+.blurr2 {
+  width: 100%;
+  height: 100%;
+  filter: blur(3px);
+  position: absolute;
+  z-index: -1;
+  background-image: url("/public/pexels-francesco-ungaro-2835436.jpg");
+  background-size: "cover";
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .content-desc {
   width: 100%;
   display: flex;
+}
+.content-desc > div {
+  height: 200px;
+  width: 10%;
+  border-right: 1px solid gray;
+}
+.content-desc > div:first-child {
+  width: 40%;
+  /* background-color: rgb(116, 102, 102); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cen {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 50%;
+}
+.cen > span {
+  font-size: 5vw;
+}
+.cen > span::after {
+  /* Use the actual degree symbol directly */
+  font-size: 10px; /* Adjust font size as needed */
+  position: relative;
+  top: 0.1em; /* Adjust vertical alignment */
+  left: 0.1em; /* Adjust horizontal alignment */
+}
+
+.day {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px;
+  color: white;
+  background: #858080;
+  font-size: 1vw;
+  margin-left: -55px;
+}
+
+.img-cen {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.img-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.img-container > svg {
+  font-size: 9vw;
+  width: 100%;
+}
+.img-container > p {
+  font-size: 15px;
+}
+.day1 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+}
+.day1 > CloudQueueIcon {
+  border: 1px solid #fff;
+}
+.day2 {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 60px;
+  border-radius: 10px;
+  padding: 2px;
+  color: white;
+  background: #858080;
+}
+.day1 > div {
+  margin: 22px;
+}
+.img {
+  margin: 15px;
+}
+
+/* Media query for devices with maximum width of 600px (typical mobile devices) */
+@media only screen and (max-width: 600px) {
+  .weather-image-container {
+    width: 100vw; /* Adjusting width for smaller screens */
+  }
+
+  .back-weather-img {
+    height: 300px; /* Adjusting height for smaller screens */
+  }
+
+  .top-left {
+    font-size: 24px; /* Adjusting font size for smaller screens */
+  }
+
+  .top-right {
+    right: 10px; /* Adjusting right position for smaller screens */
+    top: 10px; /* Adjusting top position for smaller screens */
+    font-size: 14px; /* Adjusting font size for smaller screens */
+  }
+
+  .right-bottom {
+    width: auto; /* Adjusting width for smaller screens */
+    right: 0px; /* Adjusting right position for smaller screens */
+    bottom: 15%; /* Adjusting bottom position for smaller screens */
+    font-size: 8px; /* Adjusting font size for smaller screens */
+  }
+
+  .bottom-div > div > p {
+    margin: 5px; /* Adjusting margin for smaller screens */
+    font-size: 12px; /* Adjusting font size for smaller screens */
+  }
+
+  .progress {
+    bottom: 20%; /* Adjusting bottom position for smaller screens */
+  }
+
+  .content-desc > div {
+    height: 150px; /* Adjusting height for smaller screens */
+  }
+
+  .cen > span {
+    font-size: 8vw; /* Adjusting font size for smaller screens */
+  }
+
+  .day {
+    font-size: 0.8vw;
+    margin-left: -18px; /* Adjusting font size for smaller screens */
+  }
+
+  .img-container > svg {
+    font-size: 7vw; /* Adjusting font size for smaller screens */
+  }
+
+  .img-container > p {
+    font-size: 10px; /* Adjusting font size for smaller screens */
+  }
+
+  .day1 > div {
+    margin: 10px; /* Adjusting margin for smaller screens */
+  }
+
+  .day2 {
+    width: 40px; /* Adjusting width for smaller screens */
+    font-size: 10px; /* Adjusting font size for smaller screens */
+  }
+}
+
+@media (max-width: 980px) {
+  .content-desc {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .content-desc > div:first-child {
+    width: 80%;
+    border: none;
+    border-bottom: 1px solid #ccc;
+  }
+  .content-desc > div {
+    width: 40%;
+    border: 1px solid #ccc;
+  }
 }
