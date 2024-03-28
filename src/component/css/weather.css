@@ -29,7 +29,7 @@
 }
 .back-weather-img {
   height: 400px;
-  background-image: url("/public/pexels-fabian-reitmeier-707915.jpg");
+  background-image: url("/public/berchtesgaden-alpine-watzmann-berchtesgaden-national-park-957000.jpeg");
   background-size: "cover";
   background-position: center;
   background-repeat: no-repeat;
@@ -94,14 +94,15 @@
   margin-right: 12px;
 }
 .text {
-  border-bottom: 3px solid rgba(196, 196, 8, 0.742);
+  border-bottom: 5px solid rgba(196, 196, 8, 0.742);
 }
 .text1 {
-  border-bottom: 3px solid rgb(150, 150, 244);
+  border-bottom: 5px solid rgb(150, 150, 244);
   opacity: 0.7;
 }
 .text2 {
-  border-bottom: 3px solid rgb(59, 164, 196);
+  border-bottom: 5px solid rgb(59, 164, 196);
+  opacity: 0.7;
 }
 .progress {
   position: absolute;
